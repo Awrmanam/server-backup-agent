@@ -1,0 +1,38 @@
+[agent]
+server_name = "HK-Mirza"
+work_dir = "/var/backups/server-backup-agent"
+retention_days = 14
+split_mb = 45
+lock_file = "/run/lock/server-backup-agent.lock"
+
+[agent.encryption]
+enabled = false
+recipient = ""
+delete_plain_after_encrypt = true
+
+[telegram]
+bot_token_env = "BACKUP_TELEGRAM_BOT_TOKEN"
+chat_id_env = "BACKUP_TELEGRAM_CHAT_ID"
+request_timeout_seconds = 180
+
+[[jobs]]
+name = "mirza-hk"
+type = "mirza"
+enabled = true
+bot_dir = "/var/www/html/mirzaprobotconfig"
+php_config = "/var/www/html/mirzaprobotconfig/config.php"
+include_server_config = true
+server_paths = [
+  "/etc/nginx",
+  "/etc/php/8.2/fpm",
+  "/etc/cron.d",
+  "/etc/systemd/system",
+  "/etc/letsencrypt",
+]
+
+# Example generic file backup for future use:
+# [[jobs]]
+# name = "rebecca-files"
+# type = "files"
+# enabled = false
+# paths = ["/var/lib/rebecca", "/etc/nginx"]
