@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Server Backup Agent every six hours
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:15:00
+Persistent=true
+RandomizedDelaySec=5m
+Unit=server-backup-agent.service
+
+[Install]
+WantedBy=timers.target
