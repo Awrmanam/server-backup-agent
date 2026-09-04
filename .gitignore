@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+secrets.env
+config.toml
+*.tar
+*.tar.gz
+*.age
+*.part-*
+*.sql
+*.sql.gz
+backups/
+.DS_Store
