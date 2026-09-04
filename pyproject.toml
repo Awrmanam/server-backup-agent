@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "server-backup-agent"
+version = "0.1.0"
+description = "Modular Linux backup agent with Telegram delivery"
+requires-python = ">=3.9"
+dependencies = [
+  "requests>=2.31,<3",
+  "tomli>=2.0.1; python_version < '3.11'",
+]
+
+[project.scripts]
+server-backup-agent = "backup_agent.main:cli"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
