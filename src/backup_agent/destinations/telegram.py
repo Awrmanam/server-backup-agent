@@ -16,10 +16,20 @@ class TelegramClient:
         self.chat_id = chat_id
         self.timeout = timeout
 
+    @staticmethod
+    def _rewind_files(files) -> None:
+        if not files:
+            return
+        for value in files.values():
+            stream = value[1] if isinstance(value, tuple) and len(value) > 1 else value
+            if hasattr(stream, "seek"):
+                stream.seek(0)
+
     def _request(self, method: str, *, data=None, files=None, retries: int = 3):
         last_error: Exception | None = None
         for attempt in range(1, retries + 1):
             try:
+                self._rewind_files(files)
                 response = requests.post(
                     f"{self.base_url}/{method}",
                     data=data,
