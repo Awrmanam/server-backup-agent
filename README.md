@@ -19,10 +19,12 @@ The resulting archive can be encrypted with `age`, split into Telegram-safe part
 
 ## Quick install
 
+Because this repository is private, clone it using an authenticated GitHub method (SSH, GitHub CLI, or a token):
+
 ```bash
 git clone https://github.com/Awrmanam/server-backup-agent.git /opt/server-backup-agent
 cd /opt/server-backup-agent
-sudo ./install.sh
+sudo bash install.sh
 ```
 
 Edit the runtime configuration:
